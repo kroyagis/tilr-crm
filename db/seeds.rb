@@ -14,11 +14,6 @@ Contact.delete_all
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = Faker::Internet.email
-  Contact.create!({first_name: first_name, last_name: last_name, email: email})
-end
-
-20.times do |i|
   random_note = Faker::Hipster.sentence
-  random_contact = Contact.order("RANDOM()").first
-  random_contact.note = random_note
+  Contact.create!({first_name: first_name, last_name: last_name, email: email, note: random_note})
 end
