@@ -1,3 +1,11 @@
+<%= form_tag contacts_path, :method => 'get' do =%>
+<p>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", :name => nil %>
+</p>
+<% end %>
+
+
 <h1>All contacts</h1>
 <% @contacts.each do |contact| %>
   <%= link_to "#{contact.first_name} #{contact.last_name}", contact %>
