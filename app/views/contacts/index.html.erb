@@ -1,4 +1,4 @@
 <h1>All contacts</h1>
 <% @contacts.each do |contact| %>
-  <%= link_to "#{contact.first_name}, #{contact.last_name}", contact %>
+  <%= link_to "#{contact.first_name} #{contact.last_name}", contact %>
 <% end %>

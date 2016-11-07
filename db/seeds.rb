@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+Contact.delete_all
+
+50.times do |i|
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  email = Faker::Internet.email
+  User.create!({first_name: first_name, last_name: last_name, email: email})
+end
+
+20.times do |i|
+  random_note = Faker::Hipster.sentence
+  random_contact = Contact.order("RANDOM()").first
+  random_contact.note = random_note
+end
