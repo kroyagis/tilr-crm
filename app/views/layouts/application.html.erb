@@ -9,29 +9,29 @@
   </head>
 
   <body>
-    <header>
-      <nav class="nav-bar">
+    <header class="main-header">
+      <div class="header-chunk logo-area">
         <h1>Contact Manager</h1>
+      </div>
+      <div class="header-chunk search-area">
         <%= form_tag contacts_path, :method => 'get' do =%>
           <%= text_field_tag :search, params[:search], placeholder: "Search for anyone..." %>
           <%= submit_tag "Search" %>
         <% end %>
-      </nav>
+      </div>
     </header>
-    <div class="container">
-      <aside>
-        <ul class="nav-list">
-          <li class="nav-item">
-            <%= link_to 'Create', new_contact_path %>
-          </li>
-          <li class="nav-item">
-            Groups
-          </li>
-        </ul>
-      </aside>
-      <main>
-        <%= yield %>
-      </main>
+    <nav class="side-nav">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <%= link_to 'Create', new_contact_path %>
+        </li>
+        <li class="nav-item">
+          Groups
+        </li>
+      </ul>
+    </nav>
+    <div class="main">
+      <%= yield %>
     </div>
   </body>
 </html>
