@@ -18,13 +18,68 @@
  *:before {
    box-sizing: border-box;
  }
- /*
-   BASE STYLES
- */
+
+/*
+
+   == BASE STYLES ==
+
+*/
+h1,
+h2,
+h3,
+h4{
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+}
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 100%;
-  line-height: 1.5;
+   font-family: Helvetica, Arial, sans-serif;
+   font-size: 100%;
+   line-height: 1.5;
+   margin: 0;
+}
+
+html, body {
+   height: 100%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
   margin: 0;
+}
+.main{
+  height: 100%;
+  position: relative;
+  margin-left: 200px;
+
+}
+
+.side-nav{
+  position: absolute;
+  height: 100%;
+  width: 200px;
+  background-color: gray;
+
+}
+
+/*
+  == STYLING THE NAV ==
+*/
+
+.main-header{
+  height: 70px;
+  background-color: tomato;
+  line-height: 70px;
+}
+
+.header-chunk{
+  display: inline-block;
+}
+
+.logo-area{
+  padding: 0 10px;
 }
