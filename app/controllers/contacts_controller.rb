@@ -38,6 +38,13 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
+    respond_to do |format|
+      format.html do
+        if request.xhr?
+          render layout: false
+        end
+      end
+    end
   end
 
   def destroy
