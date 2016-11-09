@@ -9,14 +9,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     </script>
   </head>
-
   <body>
     <header class="main-header">
       <div class="header-chunk logo-area">
         <h1>Contact Manager</h1>
       </div>
       <div class="header-chunk search-area">
-        <%= form_tag contacts_path, :method => 'get' do =%>
+        <%= form_tag contacts_path, :method => 'get', :id => 'contact-search' do =%>
           <%= text_field_tag :search, params[:search], placeholder: "Search for anyone..." %>
           <%= submit_tag "Search" %>
         <% end %>
@@ -35,14 +34,29 @@
         </li>
       </ul>
     </nav>
-    <div class="list-column">
-      <%= yield %>
-    </div>
-    <div class="detail-column">
-
-      <div class="contact-detail">
-
+    <% if @contact != nil %>
+      <div class="list-column">
+        <div class="contact-wrapper">
+          <%= link_to "#{@contact.first_name} #{@contact.last_name}", contact_path(@contact) %>
+        </div>
       </div>
-    </div>
+      <div class="detail-column">
+        <div class="contact-detail">
+          <%= yield %>
+        </div>
+      </div>
+    <% else %>
+      <div class="list-column">
+        <% @contacts.each do |contact| %>
+          <div class="contact-wrapper">
+            <%= link_to "#{contact.first_name} #{contact.last_name}", contact_path(contact) %>
+          </div>
+        <% end %>
+      </div>
+      <div class="detail-column">
+        <div class="contact-detail">
+        </div>
+      </div>
+    <% end %>
   </body>
 </html>
