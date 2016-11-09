@@ -16,7 +16,9 @@
 //= require_tree .
 
 $(document).on('ready page:load', function(){
+  console.log("hello");
   $('.contact-wrapper > a').on('click', function(eventObject){
+    console.log("hello");
     eventObject.preventDefault();
 
     $.ajax({
@@ -25,7 +27,9 @@ $(document).on('ready page:load', function(){
       data: {},
       dataType: 'html'
     }).done(function(responseData){
-      console.log(responseData);
+      $('.contact-detail').html(responseData);
+    }).fail(function(){
+      console.log("Something went wrong");
     });
   });
 });
