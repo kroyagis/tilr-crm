@@ -18,6 +18,14 @@
 $(document).on('ready page:load', function(){
   $('.contact-wrapper > a').on('click', function(eventObject){
     eventObject.preventDefault();
-  });
 
+    $.ajax({
+      url: $(this).attr('href'),
+      method: 'GET',
+      data: {},
+      dataType: 'html'
+    }).done(function(responseData){
+      console.log(responseData);
+    });
+  });
 });
