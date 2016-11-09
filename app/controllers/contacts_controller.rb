@@ -6,6 +6,13 @@ class ContactsController < ApplicationController
     else
       @contacts = Contact.all.order('created_at DESC')
     end
+    respond_to do |format|
+      format.html do
+        if request.xhr?
+          render layout: false
+        end
+      end
+    end
   end
 
   def new
