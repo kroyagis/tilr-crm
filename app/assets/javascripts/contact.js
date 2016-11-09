@@ -14,7 +14,7 @@ $(function(){
       console.log("Something went wrong");
     });
   });
-  // sends out ajax request when nav item is clicked
+  //sends out ajax request when nav item is clicked
   $('body').on('click', '.nav-item > a', function(eventObject){
     eventObject.preventDefault();
     $.ajax({
