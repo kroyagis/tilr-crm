@@ -18,7 +18,20 @@
         <% end %>
       </nav>
     </header>
-    <%= link_to 'Create', new_contact_path %>
-    <%= yield %>
+    <div class="container">
+      <aside>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <%= link_to 'Create', new_contact_path %>
+          </li>
+          <li class="nav-item">
+            Groups
+          </li>
+        </ul>
+      </aside>
+      <main>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>
