@@ -1,4 +1,3 @@
-<h1><%= link_to 'All contacts', contacts_url %></h1>
 <% @contacts.each do |contact| %>
   <%= link_to "#{contact.first_name} #{contact.last_name}", contact %>
 <% end %>
