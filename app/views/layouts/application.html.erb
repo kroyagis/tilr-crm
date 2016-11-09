@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <header>
+      <nav class="nav-bar">
+        <h1>Contact Manager</h1>
+        <%= form_tag contacts_path, :method => 'get' do =%>
+          <%= text_field_tag :search, params[:search], placeholder: "Search for anyone..." %>
+          <%= submit_tag "Search" %>
+        <% end %>
+      </nav>
+    </header>
     <%= link_to 'Create', new_contact_path %>
     <%= yield %>
   </body>
