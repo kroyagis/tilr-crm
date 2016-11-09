@@ -14,22 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-$(document).on('ready page:load', function(){
-  console.log("hello");
-  $('.contact-wrapper > a').on('click', function(eventObject){
-    console.log("hello");
-    eventObject.preventDefault();
-
-    $.ajax({
-      url: $(this).attr('href'),
-      method: 'GET',
-      data: {},
-      dataType: 'html'
-    }).done(function(responseData){
-      $('.contact-detail').html(responseData);
-    }).fail(function(){
-      console.log("Something went wrong");
-    });
-  });
-});
