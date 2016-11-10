@@ -23,40 +23,17 @@
     </header>
     <nav class="side-nav">
       <ul class="nav-list">
-        <li class="nav-item">
+        <li class="nav-item" id="create-button">
           <%= link_to 'Create', new_contact_path %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'All contacts', contacts_url %>
+        <li class="nav-item" id="index-button">
+          <%= link_to 'All contacts', root_path %>
         </li>
         <li class="nav-item">
           Groups
         </li>
       </ul>
     </nav>
-    <% if @contact != nil %>
-      <div class="list-column">
-        <div class="contact-wrapper">
-          <%= link_to "#{@contact.first_name} #{@contact.last_name}", contact_path(@contact) %>
-        </div>
-      </div>
-      <div class="detail-column">
-        <div class="contact-detail">
-          <%= yield %>
-        </div>
-      </div>
-    <% else %>
-      <div class="list-column">
-        <% @contacts.each do |contact| %>
-          <div class="contact-wrapper">
-            <%= link_to "#{contact.first_name} #{contact.last_name}", contact_path(contact) %>
-          </div>
-        <% end %>
-      </div>
-      <div class="detail-column">
-        <div class="contact-detail">
-        </div>
-      </div>
-    <% end %>
+    <%= yield %>
   </body>
 </html>
