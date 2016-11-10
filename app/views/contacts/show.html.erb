@@ -1,5 +1,5 @@
-    <h3><%= @contact.first_name %> <%= @contact.last_name %></h3>
-    <h3><%= @contact.email %></h3>
-    <h4>Notes: <%= @contact.note %></h4>
-    <%= link_to 'Edit', edit_contact_path(@contact) %>
-    <%= link_to 'Delete', @contact, method: :delete, data: {confirm: 'Are you sure?'} %>
+<h3><%= @contact.first_name %> <%= @contact.last_name %></h3>
+<h3><%= @contact.email %></h3>
+<h4>Notes: <%= @contact.note %></h4>
+<%= link_to 'Edit', edit_contact_path(@contact) %>
+<%= link_to 'Delete', @contact, method: :delete, data: {confirm: 'Are you sure?'} %>
