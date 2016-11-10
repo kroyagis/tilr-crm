@@ -1,15 +1,29 @@
 <%= form_for @contact do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-
-  <%= f.label :note %>
-  <%= f.text_field :note %>
-
-  <%= f.submit %>
-<% end %>  
+  <div class="form-label">
+    <%= f.label :first_name %>
+  </div>
+  <div class="form-textarea">
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="form-label">
+    <%= f.label :last_name %>
+  </div>
+  <div class="form-textarea">
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="form-label">
+    <%= f.label :email %>
+  </div>
+  <div class="form-textarea">
+    <%= f.text_field :email %>
+  </div>
+  <div class="form-label">
+    <%= f.label :note %>
+  </div>
+  <div class="form-textarea">
+    <%= f.text_field :note %>
+  </div>
+  <div class="form-action">
+    <%= f.submit %>
+  </div>
+<% end %>
