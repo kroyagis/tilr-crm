@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF">
+    <title>Contacts Manager</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    </script>
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-chunk logo-area">
+        <h1>Contact Manager</h1>
+      </div>
+      <div class="header-chunk search-area">
+        <%= form_tag contacts_path, :method => 'get', :id => 'contact-search' do =%>
+          <%= text_field_tag :search, params[:search], placeholder: "Search for anyone..." %>
+          <%= submit_tag "Search" %>
+        <% end %>
+      </div>
+    </header>
+    <nav class="side-nav">
+      <ul class="nav-list">
+        <li class="nav-item" id="create-button">
+          <%= link_to 'Create', new_contact_path %>
+        </li>
+        <li class="nav-item" id="index-button">
+          <%= link_to 'All contacts', contacts_url %>
+        </li>
+        <li class="nav-item">
+          Groups
+        </li>
+      </ul>
+    </nav>
+    <div class="list-column">
+      <% @contacts.each do |contact| %>
+        <div class="contact-wrapper">
+          <%= link_to "#{contact.first_name} #{contact.last_name}", contact_path(contact) %>
+        </div>
+      <% end %>
+    </div>
+    <div class="detail-column">
+      <h2>Detail</h2>
+      <div class="contact-detail">
+        <h3><%= @contact.first_name %> <%= @contact.last_name %></h3>
+        <h3><%= @contact.email %></h3>
+        <h4>Notes: <%= @contact.note %></h4>
+        <%= link_to 'Edit', edit_contact_path(@contact) %>
+        <%= link_to 'Delete', @contact, method: :delete, data: {confirm: 'Are you sure?'} %>
+      </div>
+    </div>
+
+  </body>
+</html>

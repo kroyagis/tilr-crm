@@ -10,13 +10,6 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
-    respond_to do |format|
-      format.html do
-        if request.xhr?
-          render layout: false
-        end
-      end
-    end
   end
 
   def create
@@ -44,17 +37,7 @@ class ContactsController < ApplicationController
   end
 
   def show
-    @contacts = Contact.all
     @contact = Contact.find(params[:id])
-    respond_to do |format|
-      format.html do
-        if request.xhr?
-          render layout: false
-        else
-          render layout: 'show'
-        end
-      end
-    end
   end
 
   def destroy
