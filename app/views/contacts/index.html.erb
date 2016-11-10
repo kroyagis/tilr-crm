@@ -1,5 +1,12 @@
-<% @contacts.each do |contact| %>
-  <div class="contact-wrapper">
-    <%= link_to "#{contact.first_name} #{contact.last_name}", contact %>
+<div class="list-column">
+  <% @contacts.each do |contact| %>
+    <div class="contact-wrapper">
+      <%= link_to "#{contact.first_name} #{contact.last_name}", contact_path(contact) %>
+    </div>
+  <% end %>
+</div>
+<div class="detail-column">
+  <div class="contact-detail">
+
   </div>
-<% end %>
+</div>
