@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
+    @groups = Group.all
     if params[:search]
       @contacts = Contact.search(params[:search]).order("created_at DESC")
     else
