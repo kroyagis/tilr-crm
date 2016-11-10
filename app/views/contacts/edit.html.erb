@@ -1,3 +1,11 @@
-<%= render 'form' %>
-
-<%= link_to 'Back', contact_path(@contact) %>
+<div class="list-column">
+    <div class="contact-wrapper">
+      <%= link_to "#{@contact.first_name} #{@contact.last_name}", contact_path(@contact) %>
+    </div>
+</div>
+<div class="detail-column">
+  <div class="contact-detail">
+    <%= render 'form' %>
+    <%= link_to 'Back', contact_path(@contact) %>
+  </div>
+</div>
