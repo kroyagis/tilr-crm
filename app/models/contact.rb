@@ -2,7 +2,7 @@ class Contact < ApplicationRecord
   validates :first_name, :last_name, :email, presence: true
   validates_format_of :email, :with => /@/, :message => "Invalid email address"
 
-  has_and_blongs_to_many :groups
+  has_and_belongs_to_many :groups
 
   def self.search(search)
     if search
