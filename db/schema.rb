@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110164458) do
+ActiveRecord::Schema.define(version: 20161110165924) do
+
+  create_table "Contacts_Groups", id: false, force: :cascade do |t|
+    t.integer "contact_id", null: false
+    t.integer "group_id",   null: false
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string   "first_name"
