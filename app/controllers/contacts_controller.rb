@@ -59,6 +59,9 @@ class ContactsController < ApplicationController
   def show
     @contact = Contact.find(params[:id])
     @groups = Group.all
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
