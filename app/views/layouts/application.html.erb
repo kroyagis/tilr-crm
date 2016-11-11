@@ -39,7 +39,7 @@
               </div>
             </li>
           <% end %>
-          <li><%= link_to "New group", new_group_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %></li>
+          <li><%= link_to "New group", new_group_path, :remote => true, data: { toggle: "modal", target: "#ajax-modal" } %></li>
         </ul>
       </ul>
     </nav>
