@@ -1,10 +1,11 @@
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
   <h3 id="myModalLabel">New Group</h3>
-  <div id="errors_div">
-  </div>
+
 </div>
 <div class="modal-body">
+  <div id="errors_div">
+  </div>
   <%= simple_form_for @group, remote: true  do |f| %>
     <%= f.input :name, label: "Please enter a new group name", hint: false, error: "You can't leave this empty." %>
     <div class="modal-footer">
