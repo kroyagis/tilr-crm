@@ -12,6 +12,10 @@ class ContactsController < ApplicationController
   def new
     @contact = Contact.new
     @groups = Group.all
+    respond_to do |format|
+      format.html { redirect_to root_path } #for my controller, i wanted it to be JS only
+      format.js
+    end
   end
 
   def all
@@ -42,6 +46,9 @@ class ContactsController < ApplicationController
   def edit
     @contact = Contact.find(params[:id])
     @groups = Group.all
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update

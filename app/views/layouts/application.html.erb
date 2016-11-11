@@ -6,7 +6,6 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     </script>
   </head>
   <body>
@@ -24,7 +23,7 @@
     <nav class="side-nav">
       <ul class="nav-list">
         <li class="nav-item" id="create-button">
-          <%= link_to 'Create', new_contact_path %>
+          <%= link_to 'Create', new_contact_path, :remote => true, data: { toggle: "modal", target: "#ajax-modal" } %>
         </li>
         <li class="nav-item" id="index-button">
           <%= link_to 'All contacts', fetch_all_path, remote: true %>
