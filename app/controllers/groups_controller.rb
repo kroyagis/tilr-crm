@@ -6,6 +6,10 @@ class GroupsController < ApplicationController
   def new
     @groups = Group.all
     @group = Group.new
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
   end
 
   def new_group
@@ -18,9 +22,11 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to group_path(@group), notice: 'The group has been created.'
+      render :js => "window.location = '#{contacts_path}'"
     else
-      render :new
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
