@@ -1,5 +1,5 @@
-<% contacts.each do |contact| %>
-  <div class="contact-wrapper">
-    <%= link_to "#{contact.first_name} #{contact.last_name}", contact_path(contact), remote: true %>
-  </div>
-<% end %>
+  <ul class="list-group">
+    <% contacts.each do |contact| %>
+      <li class="list-group-item"><%= link_to "#{contact.first_name} #{contact.last_name}", contact_path(contact), remote: true %></li>
+    <% end %>
+  </ul>
