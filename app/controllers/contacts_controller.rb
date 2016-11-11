@@ -11,10 +11,27 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
+    @groups = Group.all
+  end
+
+  def all
+    @selected = Contact.all
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def from_group
+    group = Group.find(params[:group_id])
+    @selected = group.contacts
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
     @contact = Contact.new(contact_params)
+    @groups = Group.all
     if @contact.save
       redirect_to contact_path(@contact), notice: 'The contact has been created.'
     else
@@ -24,10 +41,12 @@ class ContactsController < ApplicationController
 
   def edit
     @contact = Contact.find(params[:id])
+    @groups = Group.all
   end
 
   def update
     @contact = Contact.find(params[:id])
+    @groups = Group.all
     if @contact.update_attributes(contact_params)
       flash[:notice] = 'The contact has been updated.'
       redirect_to contact_path
@@ -39,9 +58,11 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
+    @groups = Group.all
   end
 
   def destroy
+    @groups = Group.all
     @contact = Contact.find(params[:id])
     @contact.destroy
     redirect_to contacts_url
