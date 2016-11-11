@@ -1,5 +1,20 @@
-<h3><%= contact.first_name %> <%= contact.last_name %></h3>
+<div class="card">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-block">
+    <h4 class="card-title"><%= contact.first_name %> <%= contact.last_name %></h4>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= contact.email %></li>
+    <li class="list-group-item"><%= contact.note %></li>
+  </ul>
+  <div class="card-block">
+    <%= link_to 'Edit', edit_contact_path(contact), id: "edit-button", remote: true %>
+    <%= link_to 'Delete', contact, method: :delete, data: {confirm: 'Are you sure?'} %>
+  </div>
+</div>
+
+<!-- <h3><%= contact.first_name %> <%= contact.last_name %></h3>
 <h3><%= contact.email %></h3>
 <h4>Notes: <%= contact.note %></h4>
 <%= link_to 'Edit', edit_contact_path(contact), id: "edit-button", remote: true %>
-<%= link_to 'Delete', contact, method: :delete, data: {confirm: 'Are you sure?'} %>
+<%= link_to 'Delete', contact, method: :delete, data: {confirm: 'Are you sure?'} %> -->
