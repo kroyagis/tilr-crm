@@ -13,7 +13,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new
     @groups = Group.all
     respond_to do |format|
-      format.html { redirect_to root_path } #for my controller, i wanted it to be JS only
+      format.html { redirect_to root_path }
       format.js
     end
   end
@@ -37,9 +37,11 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @groups = Group.all
     if @contact.save
-      redirect_to contact_path(@contact), notice: 'The contact has been created.'
+      render :js => "window.location = '#{contacts_path}'"
     else
-      render :new
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
@@ -56,7 +58,7 @@ class ContactsController < ApplicationController
     @groups = Group.all
     if @contact.update_attributes(contact_params)
       flash[:notice] = 'The contact has been updated.'
-      redirect_to contact_path
+      render :js => "window.location = '#{contacts_path}'"
     else
       flash[:notice] = 'The contact was not updated successfully.'
       redirect_to contact_path
