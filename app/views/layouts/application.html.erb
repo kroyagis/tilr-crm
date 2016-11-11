@@ -27,16 +27,20 @@
           <%= link_to 'Create', new_contact_path %>
         </li>
         <li class="nav-item" id="index-button">
-          <%= link_to 'All contacts', root_path %>
+          <%= link_to 'All contacts', fetch_all_path, remote: true %>
         </li>
         <ul class="group-list">
           Groups
           <% @groups.each do |group| %>
             <li>
-              <%= group.name %>
+              <%= link_to "#{group.name}", fetch_contacts_path(:group_id => group.id), remote: true %>
+              <div class="group-options">
+                <%= link_to "Edit", edit_group_path(group) %>
+                <%= link_to "Delete", group, method: :delete, data: {confirm: 'Are you sure?'} %>
+              </div>
             </li>
           <% end %>
-          <li><%= link_to "New group", new_group_path %></li>
+          <li><%= link_to "New group", new_group_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %></li>
         </ul>
       </ul>
     </nav>

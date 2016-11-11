@@ -1,16 +1,5 @@
 <div class="list-column">
-  <%= render partial: 'contacts_list', locals: {contacts: @contacts} %>
-</div>
-<div class="detail-column">
-  <div class="contact-detail">
-  </div>
-</div>
-
-
-
-
-<!-- <div class="list-column">
-  <% @contacts.each do |contact| %>
+  <% @group.contacts.each do |contact| %>
     <div class="contact-wrapper">
       <%= link_to "#{contact.first_name} #{contact.last_name}", contact_path(contact) %>
     </div>
@@ -18,5 +7,6 @@
 </div>
 <div class="detail-column">
   <div class="contact-detail">
+
   </div>
-</div> -->
+</div>

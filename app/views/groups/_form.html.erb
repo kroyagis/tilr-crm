@@ -1,0 +1,12 @@
+<%= form_for @group do |f| %>
+  <div class="form-label">
+    <%= f.label :name %>
+  </div>
+  <div class="form-textarea">
+    <%= f.text_field :name %>
+  </div>
+  <div class="form-action">
+    <%= f.submit %>
+  </div>
+<% end %>
+<%= link_to 'Back', contacts_url %>

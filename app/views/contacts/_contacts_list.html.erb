@@ -1,0 +1,5 @@
+<% contacts.each do |contact| %>
+  <div class="contact-wrapper">
+    <%= link_to "#{contact.first_name} #{contact.last_name}", contact_path(contact) %>
+  </div>
+<% end %>
