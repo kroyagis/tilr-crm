@@ -33,26 +33,41 @@
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li>
-          <%= link_to 'Create', new_contact_path, :remote => true, data: { toggle: "modal", target: "#ajax-modal" } %>
-          <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
+          <%= link_to new_contact_path, :remote => true, data: { toggle: "modal", target: "#ajax-modal" } do %>
+            Create
+            <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-plus"></span>
+          <% end %>
         </li>
         <li class="active">
           <%= link_to 'All Contacts', fetch_all_path, remote: true %>
-          <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Groups<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Groups
+            <span class="caret"></span>
+            <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span>
+          </a>
           <ul class="dropdown-menu forAnimate" role="menu">
             <% @groups.each do |group| %>
-              <li>
-                <%= link_to "#{group.name}", fetch_contacts_path(:group_id => group.id), remote: true %>
-                <%= link_to "Edit", edit_group_path(group) %>
-                <%= link_to "Delete", group, method: :delete, data: {confirm: 'Are you sure?'} %>
+              <li class="list-group group-name-container">
+                <div class="group-name-wrapper">
+                  <%= link_to "#{group.name}", fetch_contacts_path(:group_id => group.id), remote: true %>
+                </div>
+                <div class="pull-right action-buttons">
+                  <%= link_to edit_group_path(group), remote: true do %>
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  <% end %>
+                  <%= link_to group, method: :delete, data: {confirm: 'Are you sure?'} do %>
+                    <span class="glyphicon glyphicon-trash"></span>
+                  <% end %>
+                </div>
               </li>
             <% end %>
             <li class="divider"></li>
-            <li>
-              <%= link_to "New group", new_group_path, :remote => true, data: { toggle: "modal", target: "#ajax-modal" } %><
+            <li class="list-group">
+              <div class="group-name-wrapper">
+                <%= link_to "New group", new_group_path, :remote => true, data: { toggle: "modal", target: "#ajax-modal" } %>
+              </div>
             </li>
           </ul>
         </li>
