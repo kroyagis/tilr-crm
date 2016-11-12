@@ -11,12 +11,12 @@
   <body>
     <header class="main-header">
       <div class="header-chunk logo-area">
-        <h1>Contact Manager</h1>
+        <h1 id="logo">CONTACT MANAGER</h1>
       </div>
       <div class="header-chunk search-area">
-        <%= form_tag contacts_path, :method => 'get', :id => 'contact-search' do =%>
-          <%= text_field_tag :search, params[:search], placeholder: "Search for anyone..." %>
-          <%= submit_tag "Search" %>
+        <%= form_tag search_contacts_path, :method => 'get', remote: true do =%>
+          <%= text_field_tag :search, params[:search], id: "search-box", placeholder: "Search for anyone..." %>
+          <%= submit_tag "Search", id: "search-submit", :name => nil %>
         <% end %>
       </div>
     </header>
@@ -42,7 +42,7 @@
           <%= link_to 'All Contacts', fetch_all_path, remote: true %>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="groups-dropdown">
             Groups
             <span class="caret"></span>
             <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span>
