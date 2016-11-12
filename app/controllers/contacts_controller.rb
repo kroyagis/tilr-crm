@@ -9,6 +9,17 @@ class ContactsController < ApplicationController
     end
   end
 
+  def search
+    if params[:search]
+      @searched = Contact.search(params[:search]).order("created_at DESC")
+    else
+      @searched = Contact.all.order('created_at DESC')
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def new
     @contact = Contact.new
     @groups = Group.all
