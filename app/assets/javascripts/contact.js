@@ -1,4 +1,8 @@
 $(function(){
+  $(document).on('click', '.list-group-item', function(e){
+    $('div.list-group a.active').removeClass('active');
+    $(this).addClass('active');
+  });
   // // sends out ajax request
   // $(document).on('click', '.contact-wrapper > a, #create-button > a, #edit-button', function(eventObject){
   //   console.log("hello");
