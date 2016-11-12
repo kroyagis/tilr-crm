@@ -55,7 +55,6 @@ class ContactsController < ApplicationController
 
   def update
     @contact = Contact.find(params[:id])
-    @groups = Group.all
     if @contact.update_attributes(contact_params)
       flash[:notice] = 'The contact has been updated.'
       render :js => "window.location = '#{contacts_path}'"
@@ -82,7 +81,7 @@ class ContactsController < ApplicationController
 
   private
   def contact_params
-    params.require(:contact).permit(:first_name, :last_name, :email, :note, :contact_id, :profile_picture)
+    params.require(:contact).permit(:first_name, :last_name, :email, :note, :contact_id, :profile_picture, group_ids: [] )
   end
 
 end
