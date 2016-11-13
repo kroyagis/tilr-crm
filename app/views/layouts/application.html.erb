@@ -33,7 +33,7 @@
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li>
-          <%= link_to new_contact_path, :remote => true, data: { toggle: "modal", target: "#ajax-modal" } do %>
+          <%= link_to new_contact_path, :remote => true do %>
             Create
             <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-plus"></span>
           <% end %>
@@ -66,7 +66,7 @@
             <li class="divider"></li>
             <li class="list-group">
               <div class="group-name-wrapper">
-                <%= link_to "New group", new_group_path, :remote => true, data: { toggle: "modal", target: "#ajax-modal" } %>
+                <%= link_to "New group", new_group_path, id: "new-group-link", :remote => true, data: { toggle: "modal", target: "#ajax-modal" } %>
               </div>
             </li>
           </ul>
@@ -75,30 +75,6 @@
     </div>
   </div>
 </nav>
-
-    <!-- <nav class="side-nav">
-      <ul class="nav-list">
-        <li class="nav-item" id="create-button">
-          <%= link_to 'Create', new_contact_path, :remote => true, data: { toggle: "modal", target: "#ajax-modal" } %>
-        </li>
-        <li class="nav-item" id="index-button">
-          <%= link_to 'All Contacts', fetch_all_path, remote: true %>
-        </li>
-        <ul class="group-list">
-          Groups
-          <% @groups.each do |group| %>
-            <li>
-              <%= link_to "#{group.name}", fetch_contacts_path(:group_id => group.id), remote: true %>
-              <div class="group-options">
-                <%= link_to "Edit", edit_group_path(group) %>
-                <%= link_to "Delete", group, method: :delete, data: {confirm: 'Are you sure?'} %>
-              </div>
-            </li>
-          <% end %>
-          <li><%= link_to "New group", new_group_path, :remote => true, data: { toggle: "modal", target: "#ajax-modal" } %></li>
-        </ul>
-      </ul>
-    </nav> -->
     <%= yield %>
   </body>
 </html>
