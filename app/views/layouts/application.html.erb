@@ -6,34 +6,75 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     </script>
   </head>
   <body>
     <header class="main-header">
       <div class="header-chunk logo-area">
-        <h1>Contact Manager</h1>
+        <h1 id="logo">CONTACT MANAGER</h1>
       </div>
       <div class="header-chunk search-area">
-        <%= form_tag contacts_path, :method => 'get', :id => 'contact-search' do =%>
-          <%= text_field_tag :search, params[:search], placeholder: "Search for anyone..." %>
-          <%= submit_tag "Search" %>
+        <%= form_tag search_contacts_path, :method => 'get', remote: true do =%>
+          <%= text_field_tag :search, params[:search], id: "search-box", placeholder: "Search for anyone..." %>
+          <%= submit_tag "Search", id: "search-submit", :name => nil %>
         <% end %>
       </div>
     </header>
-    <nav class="side-nav">
-      <ul class="nav-list">
-        <li class="nav-item" id="create-button">
-          <%= link_to 'Create', new_contact_path %>
+    <nav class="navbar navbar-default sidebar" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link_to new_contact_path, :remote => true do %>
+            Create
+            <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-plus"></span>
+          <% end %>
         </li>
-        <li class="nav-item" id="index-button">
-          <%= link_to 'All contacts', root_path %>
+        <li class="active">
+          <%= link_to 'All Contacts', fetch_all_path, remote: true %>
         </li>
-        <li class="nav-item">
-          Groups
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="groups-dropdown">
+            Groups
+            <span class="caret"></span>
+            <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span>
+          </a>
+          <ul class="dropdown-menu forAnimate" role="menu">
+            <% @groups.each do |group| %>
+              <li class="list-group group-name-container">
+                <div class="group-name-wrapper">
+                  <%= link_to "#{group.name}", fetch_contacts_path(:group_id => group.id), remote: true %>
+                </div>
+                <div class="pull-right action-buttons">
+                  <%= link_to edit_group_path(group), remote: true do %>
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  <% end %>
+                  <%= link_to group, method: :delete, data: {confirm: 'Are you sure?'} do %>
+                    <span class="glyphicon glyphicon-trash"></span>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+            <li class="divider"></li>
+            <li class="list-group">
+              <div class="group-name-wrapper">
+                <%= link_to "New group", new_group_path, id: "new-group-link", :remote => true, data: { toggle: "modal", target: "#ajax-modal" } %>
+              </div>
+            </li>
+          </ul>
         </li>
       </ul>
-    </nav>
+    </div>
+  </div>
+</nav>
     <%= yield %>
   </body>
 </html>

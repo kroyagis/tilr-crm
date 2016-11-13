@@ -1,29 +1,10 @@
-<%= form_for @contact do |f| %>
-  <div class="form-label">
-    <%= f.label :first_name %>
-  </div>
-  <div class="form-textarea">
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="form-label">
-    <%= f.label :last_name %>
-  </div>
-  <div class="form-textarea">
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="form-label">
-    <%= f.label :email %>
-  </div>
-  <div class="form-textarea">
-    <%= f.text_field :email %>
-  </div>
-  <div class="form-label">
-    <%= f.label :note %>
-  </div>
-  <div class="form-textarea">
-    <%= f.text_field :note %>
-  </div>
-  <div class="form-action">
-    <%= f.submit %>
+<%= simple_form_for @contact, remote: true  do |f| %>
+  <%= f.input :first_name, hint: false, error: "You can't leave this empty." %>
+  <%= f.input :last_name, hint: false %>
+  <%= f.input :email, hint: false, error: "Invalid email address." %>
+  <%= f.input :note %>
+  <div class="modal-footer">
+    <%= f.submit :submit, class: "btn btn-default btn-primary" %>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
 <% end %>

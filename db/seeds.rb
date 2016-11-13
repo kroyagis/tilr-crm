@@ -9,11 +9,19 @@
 require 'faker'
 
 Contact.delete_all
+Group.delete_all
+
+Group.create!(:name => 'Family')
+Group.create!(:name => 'Ryerson Alumni')
+Group.create!(:name => 'Friends')
+Group.create!(:name => 'Colleagues')
 
 50.times do |i|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = Faker::Internet.email
   random_note = Faker::Hipster.sentence
-  Contact.create!({first_name: first_name, last_name: last_name, email: email, note: random_note})
+  group = Group.order("RANDOM()").first
+  contact = Contact.create!({first_name: first_name, last_name: last_name, email: email, note: random_note})
+  group.contacts << contact
 end

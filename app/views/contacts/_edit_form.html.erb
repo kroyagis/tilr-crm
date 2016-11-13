@@ -1,0 +1,29 @@
+<%= simple_form_for @contact, remote: true  do |f| %>
+  <div class="modal fade" id="edit-groups" tabindex="-1" role="dialog" aria-labelledby="edit-groups-title" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="edit-groups-title">Add To Group</h4>
+          </div>
+          <div class="modal-body">
+            <%= f.association :groups,label: false, as: :check_boxes, collection: Group.all.to_a, label_method: :name %>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-default btn-primary" data-dismiss="modal" aria-hidden="true">OK</button>
+          </div>
+        </div>
+      </div>
+  </div>
+  <label for="control-label string required" for="contact_profile_picture">Profile picture</label>
+  <%= f.file_field :profile_picture, as: :file %>
+  <%= f.input :first_name, hint: false, error: "You can't leave this empty." %>
+  <%= f.input :last_name, hint: false %>
+  <%= f.input :email, hint: false, error: "Invalid email address." %>
+  <%= f.input :note %>
+  <div class="edit-group-wrapper">
+    <a href="#" data-toggle="modal" data-target="#edit-groups" class="button"><i class="fa fa-plus"></i> Add To Group</a>
+  </div>
+  <%= f.button :submit, class: "btn btn-default btn-primary" %>
+  <%= link_to "Cancel", contact_path(@contact), remote: true, class: "btn btn-secondary", role: "button" %>
+<% end %>
