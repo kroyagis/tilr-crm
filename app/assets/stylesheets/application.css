@@ -30,13 +30,15 @@ h3,
 h4{
   margin: 0;
 }
+h4{
+  font-size: 24px;
+}
 
 a{
   text-decoration: none;
 }
 
 body {
-   font-family: Helvetica, Arial, sans-serif;
    font-size: 24px;
    line-height: 1.5;
    margin: 0;
@@ -52,34 +54,51 @@ ul {
   margin: 0;
 }
 
-.side-nav{
-  float:left;
-  height: 100%;
-  width: 200px;
-  background-color: gray;
-}
 
+main{
+  overflow: auto;
+  width: 900px;
+}
 .list-column{
   float: left;
-  height: 100%;
-  width: 200px;
+  max-height: 800px;
+  width: 300px;
   display: inline-block;
+  overflow: auto;
 }
 .detail-column{
+  float: left;
+  width: 500px;
   height: 100%;
   display: inline-block;
-  width: 500px;
+}
+.avatar{
+  text-align: center;
+  margin: 30px 0;
+}
+.avatar img{
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+}
+#new-group-link{
+  color: #428bca;
 }
 
+.edit-group-wrapper{
+  margin: 15px 0;
+}
+#contact_profile_picture{
+  font-size: 13px;
+
+}
 /*
   == STYLING THE NAV ==
 */
-
-.main-header{
-  height: 70px;
-  background-color: tomato;
+#logo{
   line-height: 70px;
 }
+
 
 .header-chunk{
   display: inline-block;
@@ -88,3 +107,168 @@ ul {
 .logo-area{
   padding: 0 10px;
 }
+
+
+/* following the same style of side-nav */
+.group-name-wrapper{
+  display: inline-block;
+  color: #555555;
+}
+.group-name-wrapper>a{
+  color: #555555;
+}
+
+.list-group>a{
+  clear: both;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #555555;
+  white-space: nowrap;
+}
+.list-group{
+  padding: 3px 15px;
+  border: none;
+  border-radius: 0;
+}
+.list-group-item{
+  border: none;
+  border-radius: 0;
+}
+.action-buttons>a{
+  display: none;
+}
+.group-name-container:hover .action-buttons>a{
+  display: inline-block;
+}
+.action-buttons>a{
+  color: #555555;
+}
+
+#groups-dropdown{
+  background-color: #f8f8f8;
+}
+
+
+  nav.sidebar, .main{
+    -webkit-transition: margin 200ms ease-out;
+      -moz-transition: margin 200ms ease-out;
+      -o-transition: margin 200ms ease-out;
+      transition: margin 200ms ease-out;
+  }
+
+  .main{
+    padding: 10px 10px 0 10px;
+  }
+
+  .badge{
+    float: right;
+  }
+  .group-list a{
+
+      display: inline-block;
+
+  }
+
+ @media (min-width: 765px) {
+
+    .main{
+      position: absolute;
+      width: calc(100% - 40px);
+      margin-left: 40px;
+      float: right;
+    }
+
+    nav.sidebar:hover + .main{
+      margin-left: 200px;
+    }
+
+    nav.sidebar.navbar.sidebar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+      margin-left: 0px;
+    }
+
+    nav.sidebar .navbar-brand, nav.sidebar .navbar-header{
+      text-align: center;
+      width: 100%;
+      margin-left: 0px;
+    }
+
+    /*nav.sidebar a{
+      padding-right: 13px;
+    }*/
+
+    nav.sidebar .navbar-nav > li:first-child{
+      border-top: 1px #e5e5e5 solid;
+    }
+
+    nav.sidebar .navbar-nav > li{
+      border-bottom: 1px #e5e5e5 solid;
+    }
+
+    nav.sidebar .navbar-nav .open .dropdown-menu {
+      position: static;
+      float: none;
+      width: auto;
+      margin-top: 0;
+      background-color: transparent;
+      border: 0;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+
+    nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
+      padding: 0 0px 0 0px;
+    }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+      color: #777;
+    }
+
+    nav.sidebar{
+      width: 200px;
+      height: 100%;
+      margin-left: -160px;
+      float: left;
+      margin-bottom: 0px;
+    }
+
+    nav.sidebar li {
+      width: 100%;
+    }
+
+    nav.sidebar:hover{
+      margin-left: 0px;
+    }
+
+    .forAnimate{
+      opacity: 0;
+    }
+  }
+
+  @media (min-width: 1000px) {
+
+    .main{
+      width: calc(100% - 200px);
+      margin-left: 200px;
+    }
+
+    nav.sidebar{
+      margin-left: 0px;
+      float: left;
+    }
+
+    nav.sidebar .forAnimate{
+      opacity: 1;
+    }
+  }
+
+  nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
+    color: #CCC;
+    background-color: transparent;
+  }
+
+  nav:hover .forAnimate{
+    opacity: 1;
+  }
+  section{
+    padding-left: 15px;
+  }
