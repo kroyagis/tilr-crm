@@ -1,13 +1,14 @@
-<div class="list-column">
-  <%= render partial: 'contacts_list', locals: {contacts: @contacts} %>
-</div>
-<div class="detail-column">
-  <div class="contact-detail">
+<main>
+  <div class="list-column">
+    <%= render partial: 'contacts_list', locals: {contacts: @contacts} %>
   </div>
-</div>
-
-<div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content"></div>
+  <div class="detail-column">
+    <div class="contact-detail">
+    </div>
   </div>
-</div>
+  <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content"></div>
+    </div>
+  </div>
+</main>
