@@ -14,6 +14,14 @@
       <li class="list-group-item"><h4 class="card-title"><%= @contact.first_name %> <%= @contact.last_name %></h4></li>
       <li class="list-group-item"><%= mail_to "#{@contact.email}" %></li>
       <li class="list-group-item"><h5>Notes:</h5> <%= @contact.note %></li>
+      <% if @contact.groups %>
+        <li class="list-group-item">
+          <h5>Group:</h5>
+          <% @contact.groups.each do |group| %>
+            <span><%= group.name %></span> 
+          <% end %>
+        </li>
+      <% end %>
       <li class="list-group-item"><%= link_to 'Edit', edit_contact_path(@contact), id: "edit-button", remote: true %> <%= link_to 'Delete', @contact, method: :delete, data: {confirm: 'Are you sure?'} %></li>
     </ul>
   </div>
