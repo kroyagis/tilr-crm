@@ -1,15 +1,20 @@
-<div class="card">
-  <div class="avatar">
-    <% if @contact.profile_picture.file %>
-      <%= image_tag(@contact.profile_picture) %>
-    <% else %>
-      <%= image_tag('default_user.PNG', class: "card-img-top", alt: "Card image cap") %>
-    <% end %>
+<div class="modal-header" style="border: none;">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+</div>
+<div class="modal-body">
+  <div class="card">
+    <div class="avatar">
+      <% if @contact.profile_picture.file %>
+        <%= image_tag(@contact.profile_picture) %>
+      <% else %>
+        <%= image_tag('default_user.PNG', class: "card-img-top", alt: "Card image cap") %>
+      <% end %>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><h4 class="card-title"><%= @contact.first_name %> <%= @contact.last_name %></h4></li>
+      <li class="list-group-item"><%= mail_to "#{@contact.email}" %></li>
+      <li class="list-group-item"><h5>Notes:</h5> <%= @contact.note %></li>
+      <li class="list-group-item"><%= link_to 'Edit', edit_contact_path(@contact), id: "edit-button", remote: true %> <%= link_to 'Delete', @contact, method: :delete, data: {confirm: 'Are you sure?'} %></li>
+    </ul>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><h4 class="card-title"><%= contact.first_name %> <%= contact.last_name %></h4></li>
-    <li class="list-group-item"><%= mail_to "#{contact.email}" %></li>
-    <li class="list-group-item"><h5>Notes:</h5> <%= contact.note %></li>
-    <li class="list-group-item"><%= link_to 'Edit', edit_contact_path(contact), id: "edit-button", remote: true %> <%= link_to 'Delete', contact, method: :delete, data: {confirm: 'Are you sure?'} %></li>
-  </ul>
 </div>

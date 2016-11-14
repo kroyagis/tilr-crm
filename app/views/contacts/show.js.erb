@@ -1,1 +1,2 @@
-$(".contact-detail").html("<%= escape_javascript(render partial: 'show_contact', locals: { contact: @contact } ) %>");
+$("#modal-window").find(".modal-content").html("<%= j (render 'show_contact') %>");
+$("#modal-window").modal();
