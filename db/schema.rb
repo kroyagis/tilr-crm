@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20161110165924) do
 
-  create_table "Contacts_Groups", id: false, force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "contacts_groups", id: false, force: :cascade do |t|
     t.integer "contact_id", null: false
     t.integer "group_id",   null: false
   end
