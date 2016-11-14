@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
-# Use sqlite3 as the database for Active Record
+# Use sqlite3 as the database for Active Recordr
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
@@ -24,9 +24,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
-group :production do
-  gem 'rails_12factor'
-end
+# faker gem to create fake names and addresses
 gem 'faker'
 gem 'simple_form'
 # Use ActiveModel has_secure_password
@@ -36,10 +34,15 @@ gem 'simple_form'
 gem "therubyracer"
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
-
+# carrier save gem to allow profile picture uploads
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem "mini_magick"
+# enables image to be saved via AJAX call
 gem 'remotipart', '~> 1.2'
+
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
