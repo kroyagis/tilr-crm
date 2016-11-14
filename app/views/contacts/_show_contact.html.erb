@@ -17,9 +17,7 @@
       <% if @contact.groups %>
         <li class="list-group-item">
           <h5>Group:</h5>
-          <% @contact.groups.each do |group| %>
-            <span><%= group.name %></span> 
-          <% end %>
+          <%= @contact.groups.map(&:name).join(", ") %>
         </li>
       <% end %>
       <li class="list-group-item"><%= link_to 'Edit', edit_contact_path(@contact), id: "edit-button", remote: true %> <%= link_to 'Delete', @contact, method: :delete, data: {confirm: 'Are you sure?'} %></li>
