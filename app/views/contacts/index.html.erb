@@ -2,13 +2,23 @@
   <div class="list-column">
     <%= render partial: 'contacts_list', locals: {contacts: @contacts} %>
   </div>
-  <div class="detail-column">
-    <div class="contact-detail">
-    </div>
-  </div>
+
+  <!-- first modal -->
   <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content"></div>
     </div>
+  </div>
+
+  <!-- second modal -->
+  <div class="modal fade" id="edit-groups-modal" tabindex="-1" role="dialog" aria-labelledby="edit-groups-title" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="edit-groups-title">Add To Group</h4>
+          </div>
+        </div>
+      </div>
   </div>
 </main>
