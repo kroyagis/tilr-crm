@@ -5,9 +5,6 @@
 <div class="modal-body">
   <%= simple_form_for @contact, remote: true  do |f| %>
   <%= f.association :groups,label: false, as: :check_boxes, collection: Group.all.to_a, label_method: :name %>
-  <%= f.button :submit, class: "btn btn-default btn-primary" %>
+  <%= f.button :submit, class: "btn btn-default btn-primary", data: { dismiss: "modal" } %>
   <% end %>
-</div>
-<div class="modal-footer">
-
 </div>
