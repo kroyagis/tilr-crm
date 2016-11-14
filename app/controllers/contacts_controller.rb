@@ -1,20 +1,21 @@
 class ContactsController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
   def index
-    @contacts = Contact.all
+    @contacts = Contact.order(sort_column + " " + sort_direction)
     @groups = Group.all
-    if params[:search]
-      @contacts = Contact.search(params[:search]).order("created_at DESC")
-    else
-      @contacts = Contact.all.order('created_at DESC')
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
   # search method
   def search
     if params[:search]
-      @searched = Contact.search(params[:search]).order("created_at DESC")
+      @searched = Contact.search(params[:search]).order(sort_column + " " + sort_direction)
     else
-      @searched = Contact.all.order('created_at DESC')
+      @searched = Contact.all.order(sort_column + " " + sort_direction)
     end
     respond_to do |format|
       format.js
@@ -30,7 +31,7 @@ class ContactsController < ApplicationController
 
   # retrieves all contacts
   def all
-    @selected = Contact.all
+    @selected = Contact.order(sort_column + " " + sort_direction)
     respond_to do |format|
       format.js
     end
@@ -39,7 +40,7 @@ class ContactsController < ApplicationController
   # retrieves contacts from the selected group
   def from_group
     group = Group.find(params[:group_id])
-    @selected = group.contacts
+    @selected = group.contacts.order(sort_column + " " + sort_direction)
     respond_to do |format|
       format.js
     end
@@ -58,7 +59,6 @@ class ContactsController < ApplicationController
 
   def edit
     @contact = Contact.find(params[:id])
-    @groups = Group.all
     respond_to do |format|
       format.js
     end
@@ -89,5 +89,17 @@ class ContactsController < ApplicationController
   private
   def contact_params
     params.require(:contact).permit(:first_name, :last_name, :email, :note, :contact_id, :profile_picture, group_ids: [] )
+  end
+
+  def sortable_columns
+   ["first_name", "last_name", "email"]
+  end
+
+  def sort_column
+    sortable_columns.include?(params[:column]) ? params[:column] : "first_name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
