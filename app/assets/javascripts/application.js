@@ -15,3 +15,5 @@
 //= require jquery.remotipart
 //= require twitter/bootstrap
 //= require_tree .
+
+// main jQuery codes are in contact.js

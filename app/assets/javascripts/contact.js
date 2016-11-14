@@ -1,37 +1,23 @@
 $(function(){
-  $(document).on('click', '.list-column .list-group-item', function(e){
-    $('div.list-group a.active').removeClass('active');
+
+  // clicking on each contact activates and deactivates active class
+  $(document).on('click', '.clickable-row', function(){
+    $('.clickable-row.active').removeClass('active');
     $(this).addClass('active');
+    $.getScript($(this).data("href"));
+    return false;
   });
-  // // sends out ajax request
-  // $(document).on('click', '.contact-wrapper > a, #create-button > a, #edit-button', function(eventObject){
-  //   console.log("hello");
-  //   eventObject.preventDefault();
-  //   $.ajax({
-  //     url: $(this).attr('href'),
-  //     method: 'GET',
-  //     data: {},
-  //     dataType: 'html'
-  //   }).done(function(responseData){
-  //     console.log(responseData);
-  //     $('.contact-detail').html(responseData);
-  //   }).fail(function(){
-  //     console.log("Something went wrong");
-  //   });
-  // });
-  // $(document).on('submit','.new_contact, .edit_contact', function(eventObject){
-  //   console.log("form submitted");
-  //   eventObject.preventDefault();
-  //   $.ajax({
-  //     url: $(this).attr('action'),
-  //     method: $(this).attr('method'),
-  //     data: $(this).serialize(),
-  //     dataType: 'html'
-  //   }).done(function(responseData){
-  //     console.log(responseData);
-  //     $('.contact-detail').html(responseData);
-  //   }).fail(function(){
-  //     console.log("Something went wrong");
-  //   });
-  // });
+
+  // sort link triggers AJAX request
+  $(document).on('click', '#contacts-list th a', function(){
+    $.getScript(this.href);
+    return false;
+  });
+
+  // live search without... use jQuery plugin instead for production
+  $("#contact-search input").keyup(function() {
+    $.get($("#contact-search").attr("action"), $("#contact-search").serialize(), null, "script");
+    return false;
+  });
+  
 });
