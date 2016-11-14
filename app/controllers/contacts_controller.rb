@@ -49,7 +49,7 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
-      render :js => "window.location = '#{contacts_path}'"
+      redirect_to contact_path(@contact)
     else
       respond_to do |format|
         format.js { render :action => "display_error"}
@@ -67,7 +67,7 @@ class ContactsController < ApplicationController
   def update
     @contact = Contact.find(params[:id])
     if @contact.update_attributes(contact_params)
-      render :js => "window.location = '#{contacts_path}'"
+      redirect_to contact_path(@contact)
     else
       redirect_to contact_path
     end
