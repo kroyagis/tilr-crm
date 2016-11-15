@@ -1,7 +1,7 @@
 <%= simple_form_for @group, remote: true  do |f| %>
   <%= f.input :name, label: "Group name", hint: false %>
   <div class="modal-footer">
-    <%= f.button :submit, class: "btn btn-default btn-primary" %>
+    <%= f.button :submit, class: "btn btn-default btn-primary new-group-submit-button" %>
     <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
   </div>
 <% end %>

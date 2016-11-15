@@ -1,19 +1,19 @@
-<main>
-  <div class="container">
+<div class="content">
+  <!-- main modal -->
+  <div class="modal fade" id="modal-window" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content"></div>
+    </div>
+  </div>
 
-    <!-- main modal -->
-    <div class="modal fade" id="modal-window" role="dialog" aria-hidden="true">
+  <!-- Add To Group modal -->
+  <div class="modal fade" id="edit-groups-modal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content"></div>
       </div>
-    </div>
-
-    <!-- Add To Group modal -->
-    <div class="modal fade" id="edit-groups-modal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content"></div>
-        </div>
-    </div>
-    <%= render partial: 'table_contacts', locals: {contacts: @contacts} %>
   </div>
-</main>
+  <div class="table-container">
+    <%= render partial: 'table_contacts', locals: { contacts: @contacts } %>
+  </div>
+  
+</div>
