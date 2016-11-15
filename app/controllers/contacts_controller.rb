@@ -10,37 +10,8 @@ class ContactsController < ApplicationController
     end
   end
 
-  # search method
-  def search
-    if params[:search]
-      @searched = Contact.search(params[:search]).order(sort_column + " " + sort_direction)
-    else
-      @searched = Contact.all.order(sort_column + " " + sort_direction)
-    end
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def new
     @contact = Contact.new
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  # retrieves all contacts
-  def all
-    @selected = Contact.order(sort_column + " " + sort_direction)
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  # retrieves contacts from the selected group
-  def from_group
-    group = Group.find(params[:group_id])
-    @selected = group.contacts.order(sort_column + " " + sort_direction)
     respond_to do |format|
       format.js
     end
@@ -54,6 +25,13 @@ class ContactsController < ApplicationController
       respond_to do |format|
         format.js { render :action => "display_error"}
       end
+    end
+  end
+
+  def show
+    @contact = Contact.find(params[:id])
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -73,17 +51,39 @@ class ContactsController < ApplicationController
     end
   end
 
-  def show
+  def destroy
     @contact = Contact.find(params[:id])
+    @contact.destroy
+    redirect_to contacts_url
+  end
+
+  # retrieves all contacts
+  def all
+    @selected = Contact.order(sort_column + " " + sort_direction)
     respond_to do |format|
       format.js
     end
   end
 
-  def destroy
-    @contact = Contact.find(params[:id])
-    @contact.destroy
-    redirect_to contacts_url
+  # search method
+  def search
+    if params[:search]
+      @searched = Contact.search(params[:search]).order(sort_column + " " + sort_direction)
+    else
+      @searched = Contact.all.order(sort_column + " " + sort_direction)
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  # retrieves contacts from the selected group
+  def from_group
+    group = Group.find(params[:group_id])
+    @selected = group.contacts.order(sort_column + " " + sort_direction)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
