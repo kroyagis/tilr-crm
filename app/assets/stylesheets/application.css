@@ -59,7 +59,7 @@ ul {
 
 /*
 
-  styling the container
+  styling the content
 
 */
 
@@ -148,6 +148,14 @@ ul {
   padding: 0 15px;
   line-height: 70px;
   float: left;
+}
+#logo a{
+  text-decoration: none;
+  color: black;
+}
+#small-logo a{
+  text-decoration: none;
+  color: black;
 }
 
 #search{

@@ -1,5 +1,7 @@
 <nav class="nav-bar">
-  <h1 class="hidden-xs " id="logo">CONTACT MANAGER</h1>
+  <h1 class="hidden-xs " id="logo">
+    <%= link_to "CONTACT MANAGER", root_path %>
+  </h1>
   <div class="search-box-wrapper">
     <%= form_tag search_contacts_path, :method => 'get', id: "contact-search", remote: true do =%>
       <div class="form-search-wrapper">
