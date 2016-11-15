@@ -63,16 +63,37 @@ ul {
 
 */
 
-main{
-  overflow: auto;
+
+#new-group-link{
+  color: #428bca;
 }
 
-.list-column{
-  float: left;
-  max-height: 800px;
-  width: 100%;
-  display: inline-block;
-  overflow: auto;
+#contacts-list .glyphicon{
+  font-size: 13px;
+}
+
+#sidebar-glyphs{
+  margin-right: 10px;
+  padding-top: 1px;
+}
+
+/*
+
+  Inside the modal
+
+*/
+
+.modal .card span{
+  padding-right: 10px;
+}
+
+.edit-form-wrapper
+{
+  padding: 0 30px 30px 30px;
+}
+
+.edit-group-wrapper{
+  margin: 15px 0;
 }
 
 .avatar{
@@ -85,41 +106,10 @@ main{
   border-radius: 50%;
 }
 
-#new-group-link{
-  color: #428bca;
-}
-
-.edit-group-wrapper{
-  margin: 15px 0;
-}
-
 #contact_profile_picture{
   font-size: 13px;
 }
 
-#contacts-list .glyphicon{
-  font-size: 13px;
-}
-
-#sidebar-glyphs{
-  margin-right: 10px;
-  padding-top: 1px;
-}
-
-.edit-form-wrapper
-{
-  padding: 30px;
-}
-
-/*
-
-  Inside the modal
-
-*/
-
-.modal .card span{
-  padding-right: 10px;
-}
 /*
 
   styling the nav
@@ -158,16 +148,28 @@ main{
   padding: 0 15px;
   line-height: 70px;
   float: left;
-  margin-right: 50px;
 }
 
+#search{
+  width: 100%;
+}
 .search-box-wrapper{
-  top: 25%;
+  padding: 0 20px;
+}
+.form-search-wrapper{
+  margin-right: 50px;
+  position: relative;
+}
+.form-search-wrapper button{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 10px;
+}
+
+.group-name-wrapper{
   display: inline-block;
-  float: left;
-  margin-top: 10px;
-  margin-left: 20px;
-  padding: 0;
 }
 
 .group-name-wrapper>a{
@@ -228,8 +230,9 @@ nav.sidebar {
    display: block;
   }
 
-  main{
+  .content{
     margin-left: 40px;
+    padding-left: 10px;
   }
 
   .navbar-nav > li > a{
@@ -248,6 +251,15 @@ nav.sidebar {
 
   nav.sidebar .navbar-nav > li{
     border-bottom: 1px #e5e5e5 solid;
+  }
+
+  .search-box-wrapper{
+    height: 100%;
+    float: left;
+    width: 50%;
+  }
+  #contact-search{
+    padding-top: 20px;
   }
 
   /* dropdown menu inside sidebar */
@@ -286,7 +298,7 @@ nav.sidebar {
 
 @media (min-width: 1000px) {
 
-  main{
+  .content{
     margin-left: 200px;
   }
 
