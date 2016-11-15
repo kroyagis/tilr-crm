@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+
   def index
     @groups = Group.all
   end
@@ -14,7 +15,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      render :js => "window.location = '#{contacts_path}'"
+      redirect_to contacts_path
     else
       respond_to do |format|
         format.js { render :action => "display_error"}
@@ -43,7 +44,7 @@ class GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-    render :js => "window.location = '#{contacts_path}'"
+    redirect_to contacts_path
   end
 
   private
