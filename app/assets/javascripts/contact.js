@@ -19,5 +19,13 @@ $(function(){
     $.get($("#contact-search").attr("action"), $("#contact-search").serialize(), null, "script");
     return false;
   });
-  
+
+  // temporary solution: forces the modal to close on submission
+  $(document).on('click', '.group-submit-button', function(){
+    $("#edit-groups-modal").modal('hide');
+  });
+  $(document).on('click', '.new-group-submit-button', function(){
+    $("#modal-window").modal('hide');
+  });
+
 });
